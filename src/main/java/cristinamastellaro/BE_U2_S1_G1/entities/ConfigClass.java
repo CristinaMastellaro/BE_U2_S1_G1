@@ -68,4 +68,25 @@ public class ConfigClass {
     public Bibita vino() {
         return new Bibita(607, 7.49, "Vino", 0.75, 13);
     }
+
+    @Bean
+    public Menu menu() {
+        List<Pizza> listaPizze = new ArrayList<>();
+        listaPizze.add(margherita());
+        listaPizze.add(hawaiiana());
+        listaPizze.add(diavola());
+
+        List<Topping> listaToppings = new ArrayList<>();
+        listaToppings.add(formaggio());
+        listaToppings.add(prosciutto());
+        listaToppings.add(cipolle());
+        listaToppings.add(ananas());
+        listaToppings.add(salamino());
+
+        List<Bibita> listaBibite = new ArrayList<>();
+        listaBibite.add(limonata());
+        listaBibite.add(acqua());
+        listaBibite.add(vino());
+        return new Menu(listaPizze, listaToppings, listaBibite);
+    }
 }
