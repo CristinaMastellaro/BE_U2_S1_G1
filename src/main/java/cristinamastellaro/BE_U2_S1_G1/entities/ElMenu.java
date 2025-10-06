@@ -1,6 +1,6 @@
 package cristinamastellaro.BE_U2_S1_G1.entities;
 
-public class ElMenu {
+public abstract class ElMenu {
     protected int calorie;
     protected double prezzo;
 
