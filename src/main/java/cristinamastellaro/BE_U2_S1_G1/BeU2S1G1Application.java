@@ -11,7 +11,7 @@ public class BeU2S1G1Application {
         SpringApplication.run(BeU2S1G1Application.class, args);
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(BeU2S1G1Application.class);
 
-        System.out.println(ctx.getBean("menu"));
+        System.out.println(ctx.getBean("Menu"));
 
 
     }

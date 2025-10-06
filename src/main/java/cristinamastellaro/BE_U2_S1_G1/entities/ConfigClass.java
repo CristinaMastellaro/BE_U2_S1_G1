@@ -69,7 +69,7 @@ public class ConfigClass {
         return new Bibita(607, 7.49, "Vino", 0.75, 13);
     }
 
-    @Bean
+    @Bean(name = "Menu")
     public Menu menu() {
         List<Pizza> listaPizze = new ArrayList<>();
         listaPizze.add(margherita());
@@ -87,6 +87,6 @@ public class ConfigClass {
         listaBibite.add(limonata());
         listaBibite.add(acqua());
         listaBibite.add(vino());
-        return new Menu(listaPizze, listaToppings, listaBibite);
+        return new Menu(listaPizze, listaToppings, listaBibite, true);
     }
 }

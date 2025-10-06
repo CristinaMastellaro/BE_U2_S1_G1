@@ -13,12 +13,26 @@ public class Menu {
     private List<Pizza> pizza;
     private List<Topping> toppings;
     private List<Bibita> bibite;
+    private boolean diversiFormati;
+
+    public Menu(List<Pizza> pizza, List<Topping> toppings, List<Bibita> bibite) {
+        this.pizza = pizza;
+        this.toppings = toppings;
+        this.bibite = bibite;
+    }
 
     @Override
     public String toString() {
         String pizze = "";
         for (Pizza pizzaS : pizza) {
             pizze += pizzaS + "\n";
+        }
+
+        String formati = "";
+        if (diversiFormati) {
+            formati += "\nFormati pizza\n";
+            formati += "\nBattuta: 3€";
+            formati += "\nFamiglia: 5€\n";
         }
 
         String toppingss = "";
@@ -31,7 +45,7 @@ public class Menu {
             bibiteTot += bibita + "\n";
         }
 
-        return "\n\nMenu\n\nPizza\n" + pizze + "\n\nAggiunte\n" + toppingss + "\n\nBibite\n" + bibiteTot;
+        return "\n\nMenu\n\nPizza\n\n" + pizze + formati + "\n\nAggiunte\n\n" + toppingss + "\n\nBibite\n\n" + bibiteTot;
 //        return "Menu{" +
 //                "pizza=" + pizza +
 //                ", toppings=" + toppings +
