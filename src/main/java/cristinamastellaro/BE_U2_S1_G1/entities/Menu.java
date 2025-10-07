@@ -2,17 +2,26 @@ package cristinamastellaro.BE_U2_S1_G1.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@Component
 public class Menu {
+    @Autowired
     private List<Pizza> pizza;
+    @Autowired
     private List<Topping> toppings;
+    @Autowired
     private List<Bibita> bibite;
+    @Autowired
     private boolean diversiFormati;
 
     public Menu(List<Pizza> pizza, List<Topping> toppings, List<Bibita> bibite) {

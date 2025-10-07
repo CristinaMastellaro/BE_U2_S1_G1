@@ -1,17 +1,36 @@
 package cristinamastellaro.BE_U2_S1_G1.entities;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+@PropertySource("application.properties")
 public class ConfigClass {
+
+    @Bean
+    public int costoCoperti(@Value("${costo.coperto}") int costo) {
+        return costo;
+    }
+
+    @Bean
+    public boolean diversiFormati() {
+        return true;
+    }
 
     @Bean
     public Topping formaggio() {
         return new Topping(92, 0.69, "Formaggio");
+    }
+
+    @Bean
+    public Topping pomodoro() {
+        return new Topping(28, 0.99, "Pomodoro");
     }
 
     @Bean
@@ -69,24 +88,90 @@ public class ConfigClass {
         return new Bibita(607, 7.49, "Vino", 0.75, 13);
     }
 
-    @Bean(name = "Menu")
-    public Menu menu() {
+    @Bean
+    @Primary
+    public List<Pizza> listaPizze() {
         List<Pizza> listaPizze = new ArrayList<>();
         listaPizze.add(margherita());
         listaPizze.add(hawaiiana());
         listaPizze.add(diavola());
-
-        List<Topping> listaToppings = new ArrayList<>();
-        listaToppings.add(formaggio());
-        listaToppings.add(prosciutto());
-        listaToppings.add(cipolle());
-        listaToppings.add(ananas());
-        listaToppings.add(salamino());
-
-        List<Bibita> listaBibite = new ArrayList<>();
-        listaBibite.add(limonata());
-        listaBibite.add(acqua());
-        listaBibite.add(vino());
-        return new Menu(listaPizze, listaToppings, listaBibite, true);
+        return listaPizze;
     }
+
+    @Bean
+    public List<Pizza> listaPizze2() {
+        List<Pizza> listaPizze = new ArrayList<>();
+        Pizza margheritaAggiunte = margherita();
+        List<Topping> toppings = margheritaAggiunte.getToppings();
+        toppings.addAll(List.of(salamino(), prosciutto()));
+        margheritaAggiunte.setToppings(toppings);
+        listaPizze.add(margheritaAggiunte);
+        listaPizze.add(hawaiiana());
+        listaPizze.add(margherita());
+        listaPizze.add(margherita());
+        return listaPizze;
+    }
+
+    @Bean
+    @Primary
+    public List<Topping> listaToppings() {
+        return List.of(formaggio(), prosciutto(), cipolle(), ananas(), salamino());
+    }
+
+    @Bean
+    @Primary
+    public List<Bibita> listaBibite() {
+        return List.of(limonata(), acqua(), vino());
+    }
+
+    @Bean
+    public List<Bibita> listaBibite2() {
+        return List.of(limonata(), acqua(), acqua());
+    }
+
+    @Bean
+    public Tavolo tavolo1() {
+        return new Tavolo(1, 20, false);
+    }
+
+    @Bean
+    public Tavolo tavolo2() {
+        return new Tavolo(2, 4, true);
+    }
+
+    @Bean
+    public Tavolo tavolo3() {
+        return new Tavolo(3, 2, false);
+    }
+
+    @Bean
+    public Tavolo tavolo4() {
+        return new Tavolo(4, 6, true);
+    }
+
+    @Bean
+    public Tavolo tavolo5() {
+        return new Tavolo(5, 2, true);
+    }
+
+//    @Bean(name = "Menu")
+//    public Menu menu() {
+//        List<Pizza> listaPizze = new ArrayList<>();
+//        listaPizze.add(margherita());
+//        listaPizze.add(hawaiiana());
+//        listaPizze.add(diavola());
+//
+//        List<Topping> listaToppings = new ArrayList<>();
+//        listaToppings.add(formaggio());
+//        listaToppings.add(prosciutto());
+//        listaToppings.add(cipolle());
+//        listaToppings.add(ananas());
+//        listaToppings.add(salamino());
+//
+//        List<Bibita> listaBibite = new ArrayList<>();
+//        listaBibite.add(limonata());
+//        listaBibite.add(acqua());
+//        listaBibite.add(vino());
+//        return new Menu(listaPizze, listaToppings, listaBibite, true);
+//    }
 }

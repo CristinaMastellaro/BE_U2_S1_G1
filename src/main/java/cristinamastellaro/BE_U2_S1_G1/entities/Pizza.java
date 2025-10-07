@@ -1,8 +1,13 @@
 package cristinamastellaro.BE_U2_S1_G1.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Setter
+@Getter
 public class Pizza extends ElMenu {
     private String nomePizza;
     private String mozzarella;
@@ -19,38 +24,6 @@ public class Pizza extends ElMenu {
     public Pizza(int calorie, double prezzo, String nomePizza, List<Topping> toppings) {
         this(calorie, prezzo, nomePizza);
         this.toppings.addAll(toppings);
-    }
-
-    public String getNomePizza() {
-        return nomePizza;
-    }
-
-    public void setNomePizza(String nomePizza) {
-        this.nomePizza = nomePizza;
-    }
-
-    public String getMozzarella() {
-        return mozzarella;
-    }
-
-    public void setMozzarella(String mozzarella) {
-        this.mozzarella = mozzarella;
-    }
-
-    public String getPomodoro() {
-        return pomodoro;
-    }
-
-    public void setPomodoro(String pomodoro) {
-        this.pomodoro = pomodoro;
-    }
-
-    public List<Topping> getToppings() {
-        return toppings;
-    }
-
-    public void setToppings(List<Topping> toppings) {
-        this.toppings = toppings;
     }
 
     @Override
